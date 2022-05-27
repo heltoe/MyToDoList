@@ -4,26 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/base_size_padding_and_margin"
+    android:paddingTop="@dimen/base_size_padding_and_margin"
+    android:paddingBottom="@dimen/base_size_padding_and_margin"
     tools:context=".ui.fragments.ListToDo">
 
-
-    <!--    <EditText-->
-    <!--        android:id="@+id/todoTextInput"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="40dp"-->
-    <!--        android:hint="@string/default_placeholder"-->
-    <!--        android:inputType="textPersonName"-->
-    <!--        app:layout_constraintEnd_toStartOf="@id/saveButton"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:id="@+id/todoTextInput"
-        app:helperText="@string/require_descr"
-        app:helperTextTextColor="@android:color/holo_red_dark"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/base_size_padding_and_margin"
+        app:helperTextTextColor="@android:color/holo_red_dark"
         app:layout_constraintEnd_toStartOf="@id/saveButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -36,31 +27,33 @@
             android:lines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
-
-    <ImageButton
+    <ImageView
         android:id="@+id/saveButton"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/base_size_padding_and_margin"
-        android:src="@drawable/ic_launcher_foreground"
+        android:layout_marginEnd="@dimen/base_size_padding_and_margin"
+        android:src="@drawable/ic_paper_plane_solid"
+        app:layout_constraintBottom_toBottomOf="@+id/todoTextInput"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/todoTextInput"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/todoTextInput" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/toDoList"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginTop="@dimen/base_size_padding_and_margin"
-        app:layoutManager="LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/todoTextInput"
-        tools:listitem="@layout/todo_item" />
+        app:layout_constraintTop_toBottomOf="@id/todoTextInput">
 
-    <!--    <AutoCompleteTextView-->
-    <!--        android:id="@+id/autoCompleteTextView"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:text="AutoCompleteTextView" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="LinearLayoutManager"
+            tools:listitem="@layout/todo_item" />
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

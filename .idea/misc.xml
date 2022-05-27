@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/android/MyToDoList/app/src/main/res/drawable/ic_paper_plane_solid.xml" value="0.2175" />
+        <entry key="..\:/android/MyToDoList/app/src/main/res/drawable/ic_pen_solid.xml" value="0.258" />
         <entry key="..\:/android/MyToDoList/app/src/main/res/layout/activity_main.xml" value="0.13677536231884058" />
-        <entry key="..\:/android/MyToDoList/app/src/main/res/layout/fragment_edit_to_do_item.xml" value="0.11851851851851852" />
+        <entry key="..\:/android/MyToDoList/app/src/main/res/layout/fragment_edit_to_do_item.xml" value="0.2" />
         <entry key="..\:/android/MyToDoList/app/src/main/res/layout/fragment_list_to_do.xml" value="0.264" />
-        <entry key="..\:/android/MyToDoList/app/src/main/res/layout/todo_item.xml" value="0.2" />
+        <entry key="..\:/android/MyToDoList/app/src/main/res/layout/todo_item.xml" value="0.1" />
       </map>
     </option>
   </component>

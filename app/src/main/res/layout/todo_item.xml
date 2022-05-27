@@ -3,8 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/base_size_padding_and_margin"
     android:paddingTop="@dimen/padding_item_todo"
+    android:paddingEnd="@dimen/base_size_padding_and_margin"
     android:paddingBottom="@dimen/padding_item_todo">
 
     <TextView
@@ -16,23 +18,26 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/editBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/base_size_padding_and_margin"
-        app:layout_constraintEnd_toStartOf="@+id/deleteBtn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        android:src="@drawable/ic_pen_solid"
+        app:layout_constraintBottom_toBottomOf="@id/textToDo"
+        app:layout_constraintEnd_toStartOf="@id/deleteBtn"
+        app:layout_constraintStart_toEndOf="@id/textToDo"
+        app:layout_constraintTop_toTopOf="@id/textToDo" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/deleteBtn"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/base_size_padding_and_margin"
+        android:src="@drawable/ic_trash_solid"
+        app:layout_constraintBottom_toBottomOf="@id/editBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_goneMarginStart="@dimen/base_size_padding_and_margin"
-        app:srcCompat="@drawable/ic_launcher_foreground" />
+        app:layout_constraintStart_toEndOf="@id/editBtn"
+        app:layout_constraintTop_toTopOf="@id/editBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
