@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mytodolist.R
 import com.example.mytodolist.databinding.FragmentListToDoBinding
@@ -32,6 +33,7 @@ class ListToDo : Fragment() {
     override fun onStart() {
         super.onStart()
         viewModel = (activity as MainActivity).viewModel
+        viewModel.setActiveToDoItem()
         setupRecyclerView()
 
         mBinding.saveButton.setOnClickListener {
@@ -46,7 +48,7 @@ class ListToDo : Fragment() {
                 }
             }
         }
-        viewModel.getAllTodos().observe(viewLifecycleOwner, Observer{
+        viewModel.getAllTodos().observe(viewLifecycleOwner, Observer {
             todoAdapter.differ.submitList(it)
         })
     }
@@ -56,6 +58,14 @@ class ListToDo : Fragment() {
         mBinding.recyclerView.apply {
             adapter = todoAdapter
             layoutManager = LinearLayoutManager(activity)
+        }
+        todoAdapter.setOnEditClickListener {
+            viewModel.setActiveToDoItem(it)
+            findNavController().navigate(R.id.action_listToDo_to_editToDoItem)
+        }
+
+        todoAdapter.setOnRemoveClickListener {
+            viewModel.deleteTodo(it)
         }
     }
 

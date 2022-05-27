@@ -13,6 +13,7 @@ class TodoViewModel(
     private val todoRepository: TodoRepository
 ) : AndroidViewModel(app) {
     val todoList: MutableLiveData<List<Todo>> = MutableLiveData()
+    val todoItemActive: MutableLiveData<Todo> = MutableLiveData()
     var todoListPage = 1
 
     init {
@@ -22,7 +23,7 @@ class TodoViewModel(
     fun getAllTodos() = todoRepository.getAllTodos()
 
     //
-    fun getTodo(id: Long) = todoRepository.getTodo(id)
+    fun getTodo(id: Int) = todoRepository.getTodo(id)
 
     //
     fun setTodo(todo: Todo) = viewModelScope.launch {
@@ -38,4 +39,7 @@ class TodoViewModel(
     fun deleteTodo(todo: Todo) = viewModelScope.launch {
         todoRepository.deleteTodo(todo)
     }
+
+    //
+    fun setActiveToDoItem(todo: Todo? = null) = todoItemActive.postValue(todo)
 }

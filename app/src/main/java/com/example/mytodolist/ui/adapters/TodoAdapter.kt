@@ -36,7 +36,24 @@ class TodoAdapter : RecyclerView.Adapter<TodoAdapter.TodoViewHolder>() {
         val todoElement = differ.currentList[position]
         holder.itemView.apply {
             holder.binding.textToDo.text = todoElement.text
+            holder.binding.editBtn.setOnClickListener {
+                onEditClickListener?.let { it(todoElement) }
+            }
+            holder.binding.deleteBtn.setOnClickListener {
+                onRemoveClickListener?.let { it(todoElement) }
+            }
         }
+    }
+
+    private var onEditClickListener: ((Todo) -> Unit)? = null
+    private var onRemoveClickListener: ((Todo) -> Unit)? = null
+
+    fun setOnEditClickListener(listener: (Todo) -> Unit) {
+        onEditClickListener = listener
+    }
+
+    fun setOnRemoveClickListener(listener: (Todo) -> Unit) {
+        onRemoveClickListener = listener
     }
 
     override fun getItemCount(): Int {
