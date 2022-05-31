@@ -3,10 +3,13 @@ package com.example.mytodolist.ui.fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.RecyclerView
 import com.example.mytodolist.R
 import com.example.mytodolist.databinding.FragmentEditToDoItemBinding
 import com.example.mytodolist.ui.MainActivity
@@ -30,6 +33,10 @@ class EditToDoItem : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        (activity as MainActivity).supportActionBar?.let {
+            it.setHomeButtonEnabled(true)
+            it.setDisplayHomeAsUpEnabled(true)
+        }
         viewModel = (activity as MainActivity).viewModel
 
         mBinding.saveButton.setOnClickListener {
